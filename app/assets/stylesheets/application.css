@@ -15,7 +15,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	vertical-align: baseline;
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
@@ -53,6 +53,7 @@ table {
     box-sizing: border-box;
     justify-content: space-between;
     align-content: space-around;
+    color: var(--fontBlack);
 }
 
 html {
@@ -68,4 +69,11 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+:root {
+  --base: #98c1ff;
+  --baseDark: #0d6efd;
+  --grey: #f2f2f2;
+  --fontBlack: rgb(80,80,80)
 }

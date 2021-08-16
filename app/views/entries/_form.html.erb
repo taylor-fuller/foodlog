@@ -18,67 +18,100 @@
     <% end %>
 
     <% if entry.errors[:calories].present? %>
-    <div class="field form-floating">
-      <%= form.number_field :calories, class: "form-control is-invalid", id: "floatingCalories", placeholder: "Calories" %>
-      <%= form.label :calories, for:"floatingCalories" %>
-    </div>
-    <div class="invalid-feedback mb-3" style="display:block;">
-      <%= entry.errors[:calories][0] %>
+    <div class="form-line-container">
+      <div class="form-line-and-error-container">
+        <div class="field form-floating">
+          <%= form.number_field :calories, class: "form-control is-invalid", id: "floatingCalories", placeholder: "Calories" %>
+          <%= form.label :calories, for:"floatingCalories" %>
+        </div>
+        <div class="invalid-feedback mb-3" style="display:block;">
+          <%= entry.errors[:calories][0] %>
+        </div>
+      </div>  
+      <div class="form-unit">kcal</div>
     </div>
     <% else %>
-    <div class="field form-floating mb-3">
-      <%= form.number_field :calories, class: "form-control", id: "floatingCalories", placeholder: "Calories" %>
-      <%= form.label :calories, for:"floatingCalories" %>
+    <div class="form-line-container">
+      <div class="field form-floating mb-3">
+        <%= form.number_field :calories, class: "form-control", id: "floatingCalories", placeholder: "Calories" %>
+        <%= form.label :calories, for:"floatingCalories" %>
+      </div>
+      <div class="form-unit">kcal</div>
     </div>
     <% end %>
 
     <% if entry.errors[:proteins].present? %>
-    <div class="field form-floating">
-      <%= form.number_field :proteins, class: "form-control is-invalid", id: "floatingProtein", placeholder: "Protein" %>
-      <%= form.label :proteins, "Protein (g)", for:"floatingProtein" %>
-    </div>
-    <div class="invalid-feedback mb-3" style="display:block;">
-      <%= entry.errors[:proteins][0] %>
+    <div class="form-line-container">
+      <div class="form-line-and-error-container">
+        <div class="field form-floating">
+          <%= form.number_field :proteins, class: "form-control is-invalid", id: "floatingProtein", placeholder: "Protein" %>
+          <%= form.label :proteins, "Protein", for:"floatingProtein" %>
+        </div>
+        <div class="invalid-feedback mb-3" style="display:block;">
+          <%= entry.errors[:proteins][0] %>
+        </div>
+      </div>
+      <div class="form-unit">g</div>
     </div>
     <% else %>
-    <div class="field form-floating mb-3">
-      <%= form.number_field :proteins, class: "form-control", id: "floatingProtein", placeholder: "Protein" %>
-      <%= form.label :proteins, "Protein (g)", for:"floatingProtein" %>
+    <div class="form-line-container">
+      <div class="field form-floating mb-3">
+        <%= form.number_field :proteins, class: "form-control", id: "floatingProtein", placeholder: "Protein" %>
+        <%= form.label :proteins, "Protein", for:"floatingProtein" %>
+      </div>
+      <div class="form-unit">g</div>
     </div>
     <% end %>
 
     <% if entry.errors[:carbohydrates].present? %>
-    <div class="field form-floating">
-      <%= form.number_field :carbohydrates, class: "form-control is-invalid", id: "floatingCarbohydrates", placeholder: "Carbohydrate" %>
-      <%= form.label :carbohydrates, "Carbohydrate (g)", for:"floatingCarbohydrates" %>
-    </div>
-    <div class="invalid-feedback mb-3" style="display:block;">
-      <%= entry.errors[:carbohydrates][0] %>
+    <div class="form-line-container">
+      <div class="form-line-and-error-container">
+        <div class="field form-floating">
+          <%= form.number_field :carbohydrates, class: "form-control is-invalid", id: "floatingCarbohydrates", placeholder: "Carbohydrate" %>
+          <%= form.label :carbohydrates, "Carbohydrate", for:"floatingCarbohydrates" %>
+        </div>
+        <div class="invalid-feedback mb-3" style="display:block;">
+          <%= entry.errors[:carbohydrates][0] %>
+        </div>
+      </div>
+      <div class="form-unit">g</div>
     </div>
     <% else %>
-    <div class="field form-floating mb-3">
-      <%= form.number_field :carbohydrates, class: "form-control", id: "floatingCarbohydrates", placeholder: "Carbohydrate" %>
-      <%= form.label :carbohydrates, "Carbohydrate (g)", for:"floatingCarbohydrates" %>
+    <div class="form-line-container">
+      <div class="field form-floating mb-3">
+        <%= form.number_field :carbohydrates, class: "form-control", id: "floatingCarbohydrates", placeholder: "Carbohydrate" %>
+        <%= form.label :carbohydrates, "Carbohydrate", for:"floatingCarbohydrates" %>
+      </div>
+      <div class="form-unit">g</div>
     </div>
     <% end %>
 
     <% if entry.errors[:fats].present? %>
-    <div class="field form-floating">
-      <%= form.number_field :fats, class: "form-control is-invalid", id: "floatingFat", placeholder: "Fat" %>
-      <%= form.label :fats, "Fat (g)", for:"floatingFat" %>
-    </div>
-    <div class="invalid-feedback mb-3" style="display:block;">
-      <%= entry.errors[:fats][0] %>
+    <div class="form-line-container">
+      <div class="form-line-and-error-container">
+        <div class="field form-floating">
+          <%= form.number_field :fats, class: "form-control is-invalid", id: "floatingFat", placeholder: "Fat" %>
+          <%= form.label :fats, "Fat", for:"floatingFat" %>
+        </div>
+        <div class="invalid-feedback mb-5" style="display:block;">
+          <%= entry.errors[:fats][0] %>
+        </div>
+      </div>
+      <div class="form-unit">g</div>
     </div>
     <% else %>
-    <div class="field form-floating mb-3">
-      <%= form.number_field :fats, class: "form-control", id: "floatingFat", placeholder: "Fat" %>
-      <%= form.label :fats, "Fat (g)", for:"floatingFat" %>
+    <div class="form-line-container">
+      <div class="field form-floating mb-4">
+        <%= form.number_field :fats, class: "form-control", id: "floatingFat", placeholder: "Fat" %>
+        <%= form.label :fats, "Fat", for:"floatingFat" %>
+      </div>
+      <div class="form-unit">g</div>
     </div>
     <% end %>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit class:"btn btn-primary" %>
+      <%= link_to 'Cancel', entries_path, class:"btn btn-danger" %>
     </div> 
   <% end %>
 </div>

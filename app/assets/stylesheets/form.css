@@ -1,5 +1,29 @@
 .form-container {
+	width: 100%;
+	background-color: var(--grey);
 	margin: auto;
+	padding: 3rem;
+}
+
+.form-line-container {
+	display: flex;
+	width: 100%;
+}
+
+.form-line-and-error-container {
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+}
+
+.field.form-floating {
+	width: 100%;
+}
+
+.form-unit {
+	text-align: center;
 	padding: 1rem;
-	max-width: 800px;
+	margin: auto;
+	margin-top: 0;
+	width: 65px;
 }

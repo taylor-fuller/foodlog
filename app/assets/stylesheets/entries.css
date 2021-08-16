@@ -1,0 +1,59 @@
+h1 {
+    text-align: center;
+}
+
+.entries-header {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.entries-header a {
+    margin: auto;
+}
+
+.card-header {
+    color: var(--grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.card-header * {
+    margin: auto 0;
+}
+
+.card-header svg{
+    transition: all .1s ease-in-out;
+}
+
+.card-header svg:hover {
+    transform: scale(1.1);
+    transition: all .1s ease-in-out;
+}
+
+.entries-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.cards-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.card-body {
+    display: flex;
+    flex-flow: column;
+}
+
+.card {
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}

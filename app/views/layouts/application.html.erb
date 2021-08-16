@@ -13,18 +13,21 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body id="view">
     <%= render "home/header" %>
-    <% if notice.present? %>
-    <div class="alert alert-success" role="alert">
-      <%= notice %>
+    <div class="content-container">
+      <% if notice.present? %>
+      <div class="alert alert-success" role="alert">
+        <%= notice %>
+      </div>
+      <% end %>
+      <% if alert.present? %>
+      <div class="alert alert-warning" role="alert">
+        <%= alert %>
+      </div>
+      <% end %>
+      <%= yield %>
     </div>
-    <% end %>
-    <% if alert.present? %>
-    <div class="alert alert-warning" role="alert">
-      <%= alert %>
-    </div>
-    <% end %>
-    <%= yield %>
+    <%= render "home/footer" %>
   </body>
 </html>

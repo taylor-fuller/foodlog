@@ -1,0 +1,21 @@
+h1 {
+    width: 100%;
+    max-width: 800px;
+    color: var(--grey);
+    margin: auto;
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 1rem;
+    background-color: var(--base);
+    background-image: -webkit-linear-gradient(-45deg,var(--base) 0,var(--baseDark) 100%);
+}
+
+.entries-form-container {
+    display: flex;
+    flex-flow: column;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    margin: auto;
+    max-width: 800px;
+    border-radius: .2rem;
+    overflow: hidden;
+}
