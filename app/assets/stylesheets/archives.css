@@ -1,0 +1,17 @@
+.archives-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.summary {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    justify-content: space-evenly;
+}

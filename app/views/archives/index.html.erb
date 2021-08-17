@@ -1,8 +1,44 @@
-<div class="cards-container">
-    <% @entries.each do |day, entries| %>
-    <h2>Entries for <%= day %></h2>
-    <div class="card border-0 m-5" style="width: 18rem;">
-        
+<%= stylesheet_link_tag 'archives' %>
+<div class="archives-container">
+  <% @entries.each do |day, entries| %>
+  <h3 class="display-6 mb-5">Entries for <%= day %></h3>
+  <div>
+  <div class="summary mb-5">
+    <div class="sub-summary">
+      <h6 class="text-muted mb-3">MEALS</h6>
+      <strong class="display-6"><%= entries.pluck(:meal_type).count %></strong>
+    </div>
+    <div class="sub-summary">
+      <h6 class="text-muted mb-3">CALORIES</h6>
+      <strong class="display-6"><%= entries.pluck(:calories).sum %></strong> kcal
+    </div>
+    <div class="sub-summary">
+      <h6 class="text-muted mb-3">PROTEIN</h6>
+      <strong class="display-6"><%= entries.pluck(:proteins).sum %></strong> g
+    </div>
+    <div class="sub-summary">
+      <h6 class="text-muted mb-3">CARBOHYDRATES</h6>
+      <strong class="display-6"><%= entries.pluck(:carbohydrates).sum %></strong> g
+    </div>
+    <div class="sub-summary">
+      <h6 class="text-muted mb-3">FATS</h6>
+      <strong class="display-6"><%= entries.pluck(:fats).sum %></strong> g
+    </div>
+  </div>
+  </div>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+  <% entries.each_with_index do |entry, index| %>
+    <div class="accordion-item">
+      <div class="accordion-header" id="flush-heading">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= index %>" aria-expanded="false" aria-controls="flush-collapse<%= index %>">
+          <%= entry.meal_type %>
+        </button>
+      </div>
+      <div id="flush-collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= index %>" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+      </div>
     </div>
     <% end %>
+  <% end %>
   </div>
+</div>

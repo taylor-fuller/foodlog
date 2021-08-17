@@ -51,7 +51,7 @@ table {
     flex-direction: column;
     min-height: 100vh;
     box-sizing: border-box;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-content: space-around;
     color: var(--fontBlack);
 }
@@ -77,4 +77,26 @@ input[type=number] {
   --grey: #f2f2f2;
   --fontBlack: rgb(80,80,80);
   --red: #dc3545;
+}
+
+body nav.navbar-expand-lg.navbar-dark.bg-dark {
+  background-image: -webkit-linear-gradient(right,var(--base) 0,var(--baseDark) 100%);
+  padding: 2rem;
+  align-content: center;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.container-fluid svg {
+  margin-right: 1rem;
+}
+
+div .collapse.navbar-collapse {
+  margin-left: 5rem;
+}
+
+.container-fluid div {
+  color: var(--grey);
 }

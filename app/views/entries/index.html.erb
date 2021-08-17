@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag 'entries' %>
 <div class="entries-container">
   <div class="entries-header mb-3">
-    <h1 class="mb-5"><%= DateTime.now.to_s(:nice_date) %></h1>
-    <%= link_to 'Create New Entry', new_entry_path, class:"btn btn-primary" %>
+    <h1 class="display-6 mb-5"><%= DateTime.now.to_s(:nice_date) %></h1>
+    <%= link_to 'Create New Entry', new_entry_path, class:"btn btn-success" %>
   </div>
   <div class="cards-container">
     <% @entries.each do |entry| %>
