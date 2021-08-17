@@ -75,6 +75,6 @@ input[type=number] {
   --base: #98c1ff;
   --baseDark: #0d6efd;
   --grey: #f2f2f2;
-  --fontBlack: rgb(80,80,80)
+  --fontBlack: rgb(80,80,80);
   --red: #dc3545;
 }

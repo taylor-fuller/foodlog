@@ -19,7 +19,7 @@
       <div class="card-links border border-top-0">
         <%= link_to 'Show', entry_path(entry) %>
         <%= link_to 'Edit', edit_entry_path(entry), class:"border border-top-0 border-bottom-0"%>
-        <%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' }, class:"delete" %>
       </div>
       <div class="card-footer border border-top-0">
         <small class="text-muted">Last updated <%= time_ago_in_words(entry.created_at) %> ago</small>
