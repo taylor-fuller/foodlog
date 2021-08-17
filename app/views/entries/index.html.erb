@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'entries' %>
 <div class="entries-container">
-  <div class="entries-header">
-    <h1><%= DateTime.now.to_s(:nice_date) %></h1>
+  <div class="entries-header mb-3">
+    <h1 class="mb-5"><%= DateTime.now.to_s(:nice_date) %></h1>
     <%= link_to 'Create New Entry', new_entry_path, class:"btn btn-primary" %>
   </div>
   <div class="cards-container">
@@ -9,9 +9,6 @@
     <div class="card border-0 m-5" style="width: 18rem;">
       <div class="card-header" style='background-image: -webkit-linear-gradient(135deg,var(--base) 0,var(--baseDark) 100%);'>
         <h5><%= entry.meal_type %></h5>
-        <%= link_to edit_entry_path(entry) do %>
-        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="var(--grey)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
-        <% end %>
       </div>
       <ul class="list-group border list-group-flush">
         <li class="list-group-item p-3 text-muted"><strong><%= entry.calories %></strong> kcal</li>
@@ -19,12 +16,13 @@
         <li class="list-group-item p-3 text-muted"><strong><%= entry.carbohydrates %></strong> grams of carbohydrates</li>
         <li class="list-group-item p-3 text-muted"><strong><%= entry.fats %></strong> grams of fat</li>
       </ul>
-      <div class="card-body border border-top-0">
-        <%= link_to 'Show', entry_path(entry), class:"btn btn-secondary m-1 mh-3" %>
-        <%= link_to 'Delete', entry, class:"btn btn-danger m-1 mh-3", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="card-links border border-top-0">
+        <%= link_to 'Show', entry_path(entry) %>
+        <%= link_to 'Edit', edit_entry_path(entry), class:"border border-top-0 border-bottom-0"%>
+        <%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
       <div class="card-footer border border-top-0">
-        <small class="text-muted">Logged: <%= time_ago_in_words(entry.created_at) %></small>
+        <small class="text-muted">Last updated <%= time_ago_in_words(entry.created_at) %> ago</small>
       </div>
     </div>
     <% end %>

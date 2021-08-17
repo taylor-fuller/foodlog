@@ -15,7 +15,7 @@ h1 {
 .card-header {
     color: var(--grey);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -49,9 +49,17 @@ h1 {
     justify-content: center;
 }
 
-.card-body {
+.card-links {
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.card-links a {
+    text-align: center;
+    padding: .5rem;
+    flex-basis: 33.3%;
+    text-decoration: none;
 }
 
 .card {
