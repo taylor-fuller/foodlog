@@ -8,7 +8,7 @@
     <% @entries.each do |entry| %>
     <div class="card border-0 m-5" style="width: 18rem;">
       <div class="card-header" style='background-image: -webkit-linear-gradient(135deg,var(--base) 0,var(--baseDark) 100%);'>
-        <h5><%= entry.meal_type %></h5>
+        <h5><%= entry.MealType.title %></h5>
       </div>
       <ul class="list-group border list-group-flush">
         <li class="list-group-item p-3 text-muted"><strong><%= entry.calories %></strong> kcal</li>

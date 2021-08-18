@@ -29,7 +29,7 @@
   <div class="accordion accordion-flush" id="accordionFlushExample">
   <ul class="list-group list-group-flush">
     <% entries.each_with_index do |entry, index| %>
-    <li class="list-group-item"><%= entry.meal_type %></li>
+    <li class="list-group-item"><%= entry.MealType.title %></li>
     <% end %>
   </ul>
   <% end %>
