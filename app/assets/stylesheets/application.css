@@ -81,7 +81,7 @@ input[type=number] {
 
 body nav.navbar-expand-lg.navbar-dark.bg-dark {
   background-image: -webkit-linear-gradient(right,var(--base) 0,var(--baseDark) 100%);
-  padding: 2rem;
+  padding: 8rem;
   align-content: center;
 }
 

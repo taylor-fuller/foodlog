@@ -1,5 +1,5 @@
-<%= stylesheet_link_tag 'archives' %>
-<div class="archives-container">
+<%= stylesheet_link_tag 'diary' %>
+<div class="diary-container">
   <% @entries.each do |day, entries| %>
   <h3 class="display-6 mb-5">Entries for <%= day %></h3>
   <div>
@@ -27,18 +27,11 @@
   </div>
   </div>
   <div class="accordion accordion-flush" id="accordionFlushExample">
-  <% entries.each_with_index do |entry, index| %>
-    <div class="accordion-item">
-      <div class="accordion-header" id="flush-heading">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= index %>" aria-expanded="false" aria-controls="flush-collapse<%= index %>">
-          <%= entry.meal_type %>
-        </button>
-      </div>
-      <div id="flush-collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= index %>" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-      </div>
-    </div>
+  <ul class="list-group list-group-flush">
+    <% entries.each_with_index do |entry, index| %>
+    <li class="list-group-item"><%= entry.meal_type %></li>
     <% end %>
+  </ul>
   <% end %>
   </div>
 </div>

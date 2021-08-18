@@ -4,7 +4,7 @@
 
     <% if entry.errors[:meal_type].present? %>
     <div class="field form-floating">
-      <%= form.select(:meal_type, ['Breakfast', 'Lunch', 'Dinner', 'Snack'], {include_blank: 'Select Meal Type'}, { :class => 'form-select form-floating is-invalid', :id => 'floatingSelect' }) %>
+      <%= form.select(:meal_type, MealType.all.collect { |u| [u.title, u.id] }, {include_blank: 'Select Meal Type'}, { :class => 'form-select form-floating is-invalid', :id => 'floatingSelect' }) %>
       <%= form.label :meal_type, "Meal Type", for:"floatingSelect" %>
     </div>
     <div class="invalid-feedback mb-3" style="display:block;">
@@ -12,7 +12,7 @@
     </div>
     <% else %>
     <div class="field form-floating mb-3">
-      <%= form.select(:meal_type, ['Breakfast', 'Lunch', 'Dinner', 'Snack'], {include_blank: 'Select Meal Type'}, { :class => 'form-select form-floating', :id => 'floatingSelect' }) %>
+      <%= form.select(:meal_type, MealType.all.collect { |u| [u.title, u.id] }, {include_blank: 'Select Meal Type'}, { :class => 'form-select form-floating', :id => 'floatingSelect' }) %>
       <%= form.label :meal_type, "Meal Type", for:"floatingSelect" %>
     </div>
     <% end %>
