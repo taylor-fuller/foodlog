@@ -5,7 +5,7 @@
     <% if entry.errors[:MealType_id].present? %>
     <div class="field form-floating">
       <%= form.select(:MealType_id, MealType.all.collect { |u| [u.title, u.id] }, {include_blank: 'Select Meal Type'}, { :class => 'form-select form-floating is-invalid', :id => 'floatingSelect' }) %>
-      <%= form.label ::MealType_id, "Meal Type", for:"floatingSelect" %>
+      <%= form.label :MealType_id, "Meal Type", for:"floatingSelect" %>
     </div>
     <div class="invalid-feedback mb-3" style="display:block;">
       <%= entry.errors[:MealType_id][0] %>
@@ -108,10 +108,11 @@
       <div class="form-unit">g</div>
     </div>
     <% end %>
+    <%= form.hidden_field :diary_date, :value => @date %>
 
     <div class="actions">
       <%= form.submit class:"btn btn-primary" %>
-      <%= link_to 'Cancel', entries_path, class:"btn btn-danger" %>
+      <%= link_to 'Cancel', root_path, class:"btn btn-danger" %>
     </div> 
   <% end %>
 </div>

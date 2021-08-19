@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 2021_08_18_074310) do
 
   create_table "entries", force: :cascade do |t|
-    t.string "meal_type"
     t.integer "calories"
     t.integer "proteins"
     t.integer "carbohydrates"
     t.integer "fats"
+    t.date "diary_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "MealType_id"

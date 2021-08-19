@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   resources :meal_types
-  root to: 'diary#index'
+  root to: 'entries#index'
   resources :entries
-  resources :diary
-  get 'diary?date=:year-:month-:day', to: 'diary#date'
+  get '/diary', to: 'diary#index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

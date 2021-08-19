@@ -7,8 +7,9 @@ class DiaryController < ApplicationController
             date = Date.parse(Time.parse(params[:date]).utc.to_s)
             @nice_date = date.strftime('%B %d, %Y')
         end
-        @entries = Entry.where(created_at: date.in_time_zone('US/Pacific').midnight..date.in_time_zone('US/Pacific').end_of_day)
-        @yesterday = (date - 1.day).strftime('%F')
-        @tomorrow = (date + 1.day).strftime('%F')
+        @entries = Entry.where(diary_date: date.in_time_zone('US/Pacific').midnight..date.in_time_zone('US/Pacific').end_of_day)
+        @previous_date = (date - 1.day).strftime('%F')
+        @date = date.strftime('%F')
+        @next_date = (date + 1.day).strftime('%F')
     end
 end
