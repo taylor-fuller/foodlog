@@ -3,9 +3,9 @@
   <div class="entries-header mb-3">
     <h1 class="display-6"><%= DateTime.now.to_s(:nice_date) %></h1>
     <div class="nav-buttons">
-      <%= link_to raw('&#x276E;'), new_entry_path, class:"btn btn-light mb-3" %>
+      <%= link_to raw('&#x276E;'), diary_path(@diary, :date => @yesterday.to_s), class:"btn btn-light mb-3" %>
       <%= link_to 'Create New Entry', new_entry_path, class:"btn btn-light mb-3" %>
-      <%= link_to raw('&#x276F;'), new_entry_path, class:"btn btn-light mb-3" %>
+      <%= link_to raw('&#x276F;'), diary_path(@diary, :date => @tomorrow.to_s), class:"btn btn-light mb-3" %>
     </div>
   </div>
   <div class="cards-container">

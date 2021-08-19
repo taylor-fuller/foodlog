@@ -1,37 +1,66 @@
 <%= stylesheet_link_tag 'diary' %>
 <div class="diary-container">
-  <% @entries.each do |day, entries| %>
-  <h3 class="display-6 mb-5">Entries for <%= day %></h3>
+  <% @entries.each do |entry| %>
+  <h3 class="display-6 mb-5">Entries for <%= @nice_date %></h3>
   <div>
   <div class="summary mb-5">
     <div class="sub-summary">
       <h6 class="text-muted mb-3">MEALS</h6>
-      <strong class="display-6"><%= entries.pluck(:meal_type).count %></strong>
+      <strong class="display-6"><%= entry.meal_type %></strong>
     </div>
     <div class="sub-summary">
       <h6 class="text-muted mb-3">CALORIES</h6>
-      <strong class="display-6"><%= entries.pluck(:calories).sum %></strong> kcal
+      <strong class="display-6"><%= entry.calories %></strong> kcal
     </div>
     <div class="sub-summary">
       <h6 class="text-muted mb-3">PROTEIN</h6>
-      <strong class="display-6"><%= entries.pluck(:proteins).sum %></strong> g
+      <strong class="display-6"><%= entry.proteins %></strong> g
     </div>
     <div class="sub-summary">
       <h6 class="text-muted mb-3">CARBOHYDRATES</h6>
-      <strong class="display-6"><%= entries.pluck(:carbohydrates).sum %></strong> g
+      <strong class="display-6"><%= entry.carbohydrates %></strong> g
     </div>
     <div class="sub-summary">
       <h6 class="text-muted mb-3">FATS</h6>
-      <strong class="display-6"><%= entries.pluck(:fats).sum %></strong> g
+      <strong class="display-6"><%= entry.fats %></strong> g
     </div>
   </div>
+  <strong class="display-6"><%= entry.created_at %></strong> 
   </div>
   <div class="accordion accordion-flush" id="accordionFlushExample">
-  <ul class="list-group list-group-flush">
-    <% entries.each_with_index do |entry, index| %>
-    <li class="list-group-item"><%= entry.MealType.title %></li>
-    <% end %>
-  </ul>
   <% end %>
+  <%= stylesheet_link_tag 'entries' %>
+  <div class="entries-container">
+    <div class="entries-header mb-3">
+      <h1 class="display-6"><%= @nice_date %></h1>
+      <div class="nav-buttons">
+        <%= link_to raw('&#x276E;'), root_path(@diary, :date => @yesterday), class:"btn btn-light mb-3" %>
+        <%= link_to 'Create New Entry', new_entry_path, class:"btn btn-light mb-3" %>
+        <%= link_to raw('&#x276F;'), root_path(@diary, :date => @tomorrow), class:"btn btn-light mb-3" %>
+      </div>
+    </div>
+    <div class="cards-container">
+      <% @entries.each do |entry| %>
+      <div class="card mb-4" style="width: 18rem;">
+        <div class="card-header">
+          <h5><%= entry.MealType.title %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item p-3 text-muted"><strong><%= entry.calories %></strong> kcal</li>
+          <li class="list-group-item p-3 text-muted"><strong><%= entry.proteins %></strong> grams of protein</li>
+          <li class="list-group-item p-3 text-muted"><strong><%= entry.carbohydrates %></strong> grams of carbohydrates</li>
+          <li class="list-group-item p-3 text-muted"><strong><%= entry.fats %></strong> grams of fat</li>
+        </ul>
+        <div class="card-links">
+          <%= link_to 'Show', entry_path(entry) %>
+          <%= link_to 'Edit', edit_entry_path(entry), class:"border border-top-0 border-bottom-0"%>
+          <%= link_to 'Delete', entry, method: :delete, data: { confirm: 'Are you sure?' }, class:"delete" %>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated <%= time_ago_in_words(entry.created_at) %> ago</small>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
