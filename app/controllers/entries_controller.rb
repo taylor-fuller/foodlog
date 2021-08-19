@@ -43,6 +43,8 @@ class EntriesController < ApplicationController
 
   # PATCH/PUT /entries/1 or /entries/1.json
   def update
+    @date = entry_params['diary_date']
+    
     respond_to do |format|
       if @entry.update(entry_params)
         format.html { redirect_to diary_path(@diary, :date => @date.to_s), notice: "Entry was successfully updated." }

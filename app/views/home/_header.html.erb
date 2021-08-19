@@ -14,10 +14,14 @@
           test
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <%# <form class="d-flex" action="/search">
+        <input class="form-control me-2" type="search" placeholder="MM/DD/YYY" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> %>
+      <%= form_tag diary_path, class:"d-flex", :method => 'get' do %>
+          <%= date_field_tag :search_date, params[:search_date], class:"form-control me-2" %>
+          <%= submit_tag "Search", :name => nil, class:"btn btn-outline-success" %>
+      <% end %>
     </div>
   </div>
 </nav>

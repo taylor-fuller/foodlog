@@ -13,7 +13,7 @@
     flex-flow: row wrap;
     width: 100%;
     justify-content: space-evenly;
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
 }
 
@@ -41,6 +41,13 @@ h2.display-6 {
 
     .sub-summary {
         margin: 1rem;
+        min-width: none;
+    }
+}
+
+@media(min-width: 1200px) {
+    .sub-summary {
+        min-width: 200px;
     }
 }
 
@@ -67,6 +74,10 @@ h1 {
     align-items: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+.card-header h5 {
+    font-weight: bold;
 }
 
 .card-header * {
@@ -134,12 +145,12 @@ a.delete {
 .nav-buttons a {
     padding: 0 1rem;
     margin: auto;
-    transition: all .15s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 
 .nav-buttons a:hover {
     transform: scale(1.2);
-    transition: all .15s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 
 .list-group {
