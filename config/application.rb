@@ -13,6 +13,7 @@ module Foodlog
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
       html_tag
     }
+    config.active_record.default_timezone = :local
 
     # Configuration for the application, engines, and railties goes here.
     #

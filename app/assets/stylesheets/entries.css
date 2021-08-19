@@ -1,5 +1,7 @@
 h1 {
+    color: var(--grey);
     text-align: center;
+    padding: 2rem;
 }
 
 .entries-header {
@@ -13,7 +15,6 @@ h1 {
 }
 
 .card-header {
-    color: var(--grey);
     display: flex;
     justify-content: center;
     align-items: center;

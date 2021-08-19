@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   get '/diary', to: 'diary#index'
   root to: 'entries#index'
   resources :entries
+  get 'diary/:year/:month/:day', to: 'diary#day'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

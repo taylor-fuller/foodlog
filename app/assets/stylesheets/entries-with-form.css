@@ -6,8 +6,6 @@ h1 {
     text-align: center;
     font-size: 2.5rem;
     padding: 1rem;
-    background-color: var(--base);
-    background-image: -webkit-linear-gradient(-45deg,var(--base) 0,var(--baseDark) 100%);
 }
 
 .entries-form-container {
