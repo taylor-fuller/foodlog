@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_074310) do
+ActiveRecord::Schema.define(version: 2021_08_20_084325) do
 
   create_table "entries", force: :cascade do |t|
+    t.string "meal_type"
     t.integer "calories"
     t.integer "proteins"
     t.integer "carbohydrates"
@@ -20,14 +21,19 @@ ActiveRecord::Schema.define(version: 2021_08_18_074310) do
     t.date "diary_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "MealType_id"
-    t.index ["MealType_id"], name: "index_entries_on_MealType_id"
   end
 
-  create_table "meal_types", force: :cascade do |t|
+  create_table "foods", force: :cascade do |t|
     t.string "title"
+    t.integer "food_calories"
+    t.integer "food_proteins"
+    t.integer "food_carbohydrates"
+    t.integer "food_fats"
+    t.integer "entry_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["entry_id"], name: "index_foods_on_entry_id"
   end
 
+  add_foreign_key "foods", "entries"
 end

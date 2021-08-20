@@ -35,16 +35,18 @@
     <div class="entries-header">
       <%= link_to 'Create New Meal', new_entry_path(@diary, :date => @date.to_s), class:"btn btn-light mb-3" %>
     </div>
-    <% @entries.each do |entry| %>
     <div class="cards-container">
+      <% @entries.each do |entry| %>
       <div class="card mb-4" style="width: 18rem;">
         <div class="card-header">
           <h5><%= entry.meal_type %></h5>
         </div>
-        <% entry.foods.each do |food| %>
-        <%= food.title %>
-        <% end %>
-        <%= link_to "Add Food", new_entry_food_path(:entry_id => entry.id) %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item p-3 text-muted"><strong><%= entry.calories %></strong> kcal</li>
+          <li class="list-group-item p-3 text-muted"><strong><%= entry.proteins %></strong> grams of protein</li>
+          <li class="list-group-item p-3 text-muted"><strong><%= entry.carbohydrates %></strong> grams of carbohydrates</li>
+          <li class="list-group-item p-3 text-muted"><strong><%= entry.fats %></strong> grams of fat</li>
+        </ul>
         <div class="card-links">
           <%= link_to 'Show', entry_path(entry) %>
           <%= link_to 'Edit', edit_entry_path(entry, :date => @date.to_s), class:"border border-top-0 border-bottom-0"%>

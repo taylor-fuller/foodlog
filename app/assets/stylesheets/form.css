@@ -23,6 +23,7 @@
 .form-unit {
 	text-align: center;
 	padding: 1rem;
+	padding-right: 0;
 	margin: auto;
 	margin-top: 0;
 	width: 65px;
