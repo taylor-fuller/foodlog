@@ -60,3 +60,29 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="cards-container">
+  <% @entries.each do |entry| %>
+  <div class="card mb-4" style="width: 18rem;">
+    <div class="card-header">
+      <h5><%= entry.meal_type %></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% entry.foods.each do |food| %>
+        <li class="list-group-item p-3 text-muted"><strong><%= food.title %></strong></li>
+      <% end %>
+      <li class="list-group-item p-3 text-muted"><%= link_to "Add Food", new_entry_food_path(:entry_id => entry.id) %></li>
+    </ul>
+    <div class="card-links">
+      <%= link_to 'Show', entry_path(entry) %>
+      <%= link_to 'Edit', edit_entry_path(entry, :date => @date.to_s), class:"border border-top-0 border-bottom-0"%>
+      <%= link_to 'Delete', entry_path(entry, :date => @date.to_s), method: :delete, data: { confirm: 'Are you sure?' }, class:"delete" %>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated <%= time_ago_in_words(entry.created_at) %> ago</small>
+    </div>
+  </div>
+  <% end %>
+</div>

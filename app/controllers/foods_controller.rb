@@ -65,6 +65,6 @@ class FoodsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def food_params
-      params.require(:food).permit(:title, :entry_id)
+      params.require(:food).permit(:title, :calories, :proteins, :carbohydrates, :fats, :entry_id)
     end
 end

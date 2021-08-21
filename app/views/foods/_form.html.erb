@@ -1,27 +1,118 @@
-<%= form_with(model: food) do |form| %>
-  <% if food.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(food.errors.count, "error") %> prohibited this food from being saved:</h2>
+<%= stylesheet_link_tag 'form' %>
+<div class="form-container">
+  <%= form_with(model: food, :html => {:novalidate => 'novalidate'}) do |form| %>
 
-      <ul>
-        <% food.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <% if food.errors[:title].present? %>
+    <div class="field form-floating">
+      <%= form.text_field :title, :class => 'form-control form-floating is-invalid', :id => 'floatingFood', placeholder: "Food" %>
+      <%= form.label :title, "Food", for:"floatingFood" %>
     </div>
+    <div class="invalid-feedback mb-3" style="display:block;">
+      <%= food.errors[:title][0] %>
+    </div>
+    <% else %>
+    <div class="field form-floating mb-3">
+      <%= form.text_field :title, :class => 'form-control form-floating', :id => 'floatingFood', placeholder: "Food"  %>
+      <%= form.label :title, "Food", for:"floatingFood" %>
+    </div>
+    <% end %>
+
+    <% if food.errors[:calories].present? %>
+    <div class="form-line-container">
+      <div class="form-line-and-error-container">
+        <div class="field form-floating">
+          <%= form.number_field :calories, class: "form-control is-invalid", id: "floatingCalories", placeholder: "Calories" %>
+          <%= form.label :calories, for:"floatingCalories"%>
+        </div>
+        <div class="invalid-feedback mb-3" style="display:block;">
+          <%= food.errors[:calories][0] %>
+        </div>
+      </div>  
+      <div class="form-unit">kcal</div>
+    </div>
+    <% else %>
+    <div class="form-line-container">
+      <div class="field form-floating mb-3">
+        <%= form.number_field :calories, class: "form-control", id: "floatingCalories", placeholder: "Calories" %>
+        <%= form.label :calories, for:"floatingCalories" %>
+      </div>
+      <div class="form-unit">kcal</div>
+    </div>
+    <% end %>
+
+    <% if food.errors[:proteins].present? %>
+    <div class="form-line-container">
+      <div class="form-line-and-error-container">
+        <div class="field form-floating">
+          <%= form.number_field :proteins, class: "form-control is-invalid", id: "floatingProtein", placeholder: "Protein" %>
+          <%= form.label :proteins, "Protein", for:"floatingProtein" %>
+        </div>
+        <div class="invalid-feedback mb-3" style="display:block;">
+          <%= food.errors[:proteins][0] %>
+        </div>
+      </div>
+      <div class="form-unit">g</div>
+    </div>
+    <% else %>
+    <div class="form-line-container">
+      <div class="field form-floating mb-3">
+        <%= form.number_field :proteins, class: "form-control", id: "floatingProtein", placeholder: "Protein" %>
+        <%= form.label :proteins, "Protein", for:"floatingProtein" %>
+      </div>
+      <div class="form-unit">g</div>
+    </div>
+    <% end %>
+
+    <% if food.errors[:carbohydrates].present? %>
+    <div class="form-line-container">
+      <div class="form-line-and-error-container">
+        <div class="field form-floating">
+          <%= form.number_field :carbohydrates, class: "form-control is-invalid", id: "floatingCarbohydrates", placeholder: "Carbohydrate" %>
+          <%= form.label :carbohydrates, "Carbohydrate", for:"floatingCarbohydrates" %>
+        </div>
+        <div class="invalid-feedback mb-3" style="display:block;">
+          <%= food.errors[:carbohydrates][0] %>
+        </div>
+      </div>
+      <div class="form-unit">g</div>
+    </div>
+    <% else %>
+    <div class="form-line-container">
+      <div class="field form-floating mb-3">
+        <%= form.number_field :carbohydrates, class: "form-control", id: "floatingCarbohydrates", placeholder: "Carbohydrate" %>
+        <%= form.label :carbohydrates, "Carbohydrate", for:"floatingCarbohydrates" %>
+      </div>
+      <div class="form-unit">g</div>
+    </div>
+    <% end %>
+
+    <% if food.errors[:fats].present? %>
+    <div class="form-line-container">
+      <div class="form-line-and-error-container">
+        <div class="field form-floating">
+          <%= form.number_field :fats, class: "form-control is-invalid", id: "floatingFat", placeholder: "Fat" %>
+          <%= form.label :fats, "Fat", for:"floatingFat" %>
+        </div>
+        <div class="invalid-feedback mb-5" style="display:block;">
+          <%= food.errors[:fats][0] %>
+        </div>
+      </div>
+      <div class="form-unit">g</div>
+    </div>
+    <% else %>
+    <div class="form-line-container">
+      <div class="field form-floating mb-4">
+        <%= form.number_field :fats, class: "form-control", id: "floatingFat", placeholder: "Fat" %>
+        <%= form.label :fats, "Fat", for:"floatingFat" %>
+      </div>
+      <div class="form-unit">g</div>
+    </div>
+    <% end %>
+    <%= form.hidden_field :entry_id, :value => @entry_id%>
+
+    <div class="actions">
+      <%= form.submit class:"btn btn-primary" %>
+      <%= link_to 'Cancel', root_path, class:"btn btn-danger" %>
+    </div> 
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :entry_id %>
-    <%= form.text_field :entry_id, :value => @entry_id%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

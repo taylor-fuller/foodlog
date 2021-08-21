@@ -14,44 +14,56 @@
       </div>
       <div class="sub-summary">
         <h6 class="mb-3">CALORIES</h6>
-        <strong class="display-6"><%= @entries.sum(:calories) %></strong> kcal
+        <strong class="display-6"><%= @calories %></strong> kcal
       </div>
       <div class="sub-summary">
         <h6 class="mb-3">PROTEIN</h6>
-        <strong class="display-6"><%= @entries.sum(:proteins) %></strong> g
+        <strong class="display-6"><%= @proteins %></strong> g
       </div>
       <div class="sub-summary">
         <h6 class="mb-3">CARBOHYDRATES</h6>
-        <strong class="display-6"><%= @entries.sum(:carbohydrates) %></strong> g
+        <strong class="display-6"><%= @carbohydrates %></strong> g
       </div>
       <div class="sub-summary">
         <h6 class="mb-3">FATS</h6>
-        <strong class="display-6"><%= @entries.sum(:fats) %></strong> g
+        <strong class="display-6"><%= @fats %></strong> g
       </div>
     </div>
   </div>
-  <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
   <div class="entries-container">
     <div class="entries-header">
       <%= link_to 'Create New Meal', new_entry_path(@diary, :date => @date.to_s), class:"btn btn-light mb-3" %>
     </div>
-    <% @entries.each do |entry| %>
     <div class="cards-container">
+      <% @entries.each do |entry| %>
       <div class="card mb-4" style="width: 18rem;">
         <div class="card-header">
           <h5><%= entry.meal_type %></h5>
         </div>
-        <% entry.foods.each do |food| %>
-        <%= food.title %>
-        <% end %>
-        <%= link_to "Add Food", new_entry_food_path(:entry_id => entry.id) %>
-        <div class="card-links">
-          <%= link_to 'Show', entry_path(entry) %>
-          <%= link_to 'Edit', edit_entry_path(entry, :date => @date.to_s), class:"border border-top-0 border-bottom-0"%>
-          <%= link_to 'Delete', entry_path(entry, :date => @date.to_s), method: :delete, data: { confirm: 'Are you sure?' }, class:"delete" %>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated <%= time_ago_in_words(entry.created_at) %> ago</small>
+        <ul class="list-group list-group-flush">
+          <% entry.foods.each do |food| %>
+            <li class="list-group-item p-3">
+              <div class="group-header">
+                <strong><%= food.title %></strong>
+                  <%= link_to "Edit Food", edit_entry_food_path(:entry_id => entry.id, :id => food.id) %>
+              </div>
+              <div class="text-muted"><strong><%= food.calories %></strong> kcal</div>
+              <div class="text-muted"><strong><%= food.proteins %></strong> grams of protein</div>
+              <div class="text-muted"><strong><%= food.carbohydrates %></strong> grams of carbohydrates</div>
+              <div class="text-muted"><strong><%= food.fats %></strong> grams of fat</div>
+            </li>
+          <% end %>
+        </ul>
+        <h5 class="p-3"><%= link_to "Add Food", new_entry_food_path(:entry_id => entry.id) %></h5>
+        <div class="card-footer-container border-top">
+          <div class="card-links">
+            <%= link_to 'Show', entry_path(entry) %>
+            <%= link_to 'Edit', edit_entry_path(entry, :date => @date.to_s), class:"border border-top-0 border-bottom-0"%>
+            <%= link_to 'Delete', entry_path(entry, :date => @date.to_s), method: :delete, data: { confirm: 'Are you sure?' }, class:"delete" %>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated <%= time_ago_in_words(entry.created_at) %> ago</small>
+          </div>
         </div>
       </div>
       <% end %>

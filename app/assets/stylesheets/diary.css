@@ -122,8 +122,13 @@ h1 {
 }
 
 .card {
+    justify-content: flex-start;
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     margin: 0 1rem;
+}
+
+.card-footer-container {
+    margin-top: auto;
 }
 
 a.delete {
@@ -155,4 +160,16 @@ a.delete {
 
 .list-group {
     text-align: left;
+}
+
+.cards-container h5 {
+    text-align: left;
+}
+
+.cards-container h5 a {
+    text-decoration: none;
+}
+
+.cards-container h5 a:hover {
+    text-decoration: underline;
 }

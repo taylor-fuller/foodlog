@@ -13,6 +13,16 @@ class DiaryController < ApplicationController
             end 
         end
         @entries = Entry.where(diary_date: date.in_time_zone('US/Pacific').midnight..date.in_time_zone('US/Pacific').end_of_day)
+        @calories = 0
+        @proteins = 0
+        @carbohydrates = 0
+        @fats = 0
+        @entries.each do |entry|
+            @calories += entry.foods.pluck(:calories).sum
+            @proteins += entry.foods.pluck(:proteins).sum
+            @carbohydrates += entry.foods.pluck(:carbohydrates).sum
+            @fats += entry.foods.pluck(:fats).sum
+        end
         @previous_date = (date - 1.day).strftime('%F')
         @date = date.strftime('%F')
         @next_date = (date + 1.day).strftime('%F')

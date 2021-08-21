@@ -14,10 +14,6 @@ ActiveRecord::Schema.define(version: 2021_08_20_084325) do
 
   create_table "entries", force: :cascade do |t|
     t.string "meal_type"
-    t.integer "calories"
-    t.integer "proteins"
-    t.integer "carbohydrates"
-    t.integer "fats"
     t.date "diary_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -25,10 +21,10 @@ ActiveRecord::Schema.define(version: 2021_08_20_084325) do
 
   create_table "foods", force: :cascade do |t|
     t.string "title"
-    t.integer "food_calories"
-    t.integer "food_proteins"
-    t.integer "food_carbohydrates"
-    t.integer "food_fats"
+    t.integer "calories"
+    t.integer "proteins"
+    t.integer "carbohydrates"
+    t.integer "fats"
     t.integer "entry_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
