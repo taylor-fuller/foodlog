@@ -18,6 +18,7 @@ class FoodsController < ApplicationController
 
   # GET /foods/1/edit
   def edit
+    @entry_id = params[:entry_id]
   end
 
   # POST /foods or /foods.json

@@ -80,9 +80,8 @@ input[type=number] {
 }
 
 body {
-  background-image: -webkit-linear-gradient(135deg,var(--base) 0,var(--baseDark) 100%);
+  background-color: var(--grey);
 }
-
 
 .container-fluid div {
   color: var(--grey);
