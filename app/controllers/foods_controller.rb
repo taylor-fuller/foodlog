@@ -1,5 +1,7 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_food, only: %i[ show edit update destroy ]
+  before_action :correct_user, only: %i[ show edit update destroy ]
 
   # GET /foods or /foods.json
   def index
@@ -13,7 +15,7 @@ class FoodsController < ApplicationController
   # GET /foods/new
   def new
     @entry_id = params[:entry_id]
-    @food = Food.new
+    @food = current_user.foods.build
   end
 
   # GET /foods/1/edit
@@ -23,7 +25,7 @@ class FoodsController < ApplicationController
 
   # POST /foods or /foods.json
   def create
-    @food = Food.new(food_params)
+    @food = current_user.foods.build(food_params)
 
     respond_to do |format|
       if @food.save
@@ -58,6 +60,11 @@ class FoodsController < ApplicationController
     end
   end
 
+  def correct_user
+    @food = current_user.foods.find_by(id: params[:id])
+    redirect_to root_path, alert: "You are not authorized for this action" if @food.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_food
@@ -66,6 +73,6 @@ class FoodsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def food_params
-      params.require(:food).permit(:title, :calories, :proteins, :carbohydrates, :fats, :entry_id)
+      params.require(:food).permit(:title, :calories, :proteins, :carbohydrates, :fats, :entry_id, :user_id)
     end
 end

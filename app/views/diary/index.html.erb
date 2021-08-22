@@ -12,7 +12,7 @@
     <div class="summary">
       <div class="sub-summary">
         <h6 class="mb-3">MEALS</h6>
-        <strong class="display-6"><%= @entries.count %></strong>
+        <strong class="display-6"><%= @count %></strong>
       </div>
       <div class="sub-summary">
         <h6 class="mb-3">CALORIES</h6>
@@ -36,7 +36,8 @@
     <%= link_to 'Add Meal', new_entry_path(@diary, :date => @date.to_s), class:"btn btn-success" %>
   </div>
   <div class="entries-container">
-    <% @entries.each do |entry| %>
+    <% unless @entries.nil? %>
+    <% @entries.each do |entry|%>
     <div class="meal-container">
       <div class="meal-header">
         <div class="display-6"><%= entry.meal_type %></div>
@@ -87,6 +88,7 @@
         </ul>
       </div>
     </div>
+    <% end %>
     <% end %>
   </div>
 </div>

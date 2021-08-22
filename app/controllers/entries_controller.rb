@@ -1,5 +1,7 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_entry, only: %i[ show edit update destroy ]
+  before_action :correct_user, only: %i[ show edit update destroy ]
 
   # GET /entries or /entries.json
   def index
@@ -12,8 +14,9 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
+    @entry = current_user.entries.build
+
     date = Date.parse(Time.parse(params[:date]).utc.to_s)
-    @entry = Entry.new
     @previous_date = (date - 1.day).strftime('%F')
     @date = date.strftime('%F')
     @next_date = (date + 1.day).strftime('%F')
@@ -27,7 +30,7 @@ class EntriesController < ApplicationController
 
   # POST /entries or /entries.json
   def create
-    @entry = Entry.new(entry_params)
+    @entry = current_user.entries.build(entry_params)
     @date = entry_params['diary_date']
 
     respond_to do |format|
@@ -68,6 +71,11 @@ class EntriesController < ApplicationController
     end
   end
 
+  def correct_user
+    @entry = current_user.entries.find_by(id: params[:id])
+    redirect_to root_path, alert: "You are not authorized for this action" if @entry.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
@@ -76,6 +84,6 @@ class EntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.require(:entry).permit(:meal_type, :diary_date)
+      params.require(:entry).permit(:meal_type, :diary_date, :user_id)
     end
 end

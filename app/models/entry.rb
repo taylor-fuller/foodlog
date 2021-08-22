@@ -1,4 +1,5 @@
 class Entry < ApplicationRecord
+    belongs_to :user
     has_many :foods
 
     validates :meal_type, presence: { message: 'Please enter a valid meal name' }

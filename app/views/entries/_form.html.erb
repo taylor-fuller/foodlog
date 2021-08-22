@@ -17,6 +17,7 @@
     </div>
     <% end %>
     <%= form.hidden_field :diary_date, :value => @date %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
 
     <div class="actions">
       <%= form.submit class:"btn btn-primary" %>

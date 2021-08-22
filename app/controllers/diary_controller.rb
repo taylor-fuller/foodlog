@@ -1,4 +1,6 @@
 class DiaryController < ApplicationController
+    before_action :authenticate_user!
+
     def index
         unless params[:date] || params[:search_date]
             date = DateTime.now
@@ -12,12 +14,15 @@ class DiaryController < ApplicationController
                 @nice_date = date.strftime('%B %d, %Y')
             end 
         end
-        @entries = Entry.where(diary_date: date.in_time_zone('US/Pacific').midnight..date.in_time_zone('US/Pacific').end_of_day)
+        @count = 0
         @calories = 0
         @proteins = 0
         @carbohydrates = 0
         @fats = 0
+        user_entries = Entry.where(user_id: current_user.id)
+        @entries = user_entries.where(diary_date: date.in_time_zone('US/Pacific').midnight..date.in_time_zone('US/Pacific').end_of_day)
         @entries.each do |entry|
+            @count += entry.foods.count
             @calories += entry.foods.pluck(:calories).sum
             @proteins += entry.foods.pluck(:proteins).sum
             @carbohydrates += entry.foods.pluck(:carbohydrates).sum

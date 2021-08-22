@@ -86,3 +86,8 @@ body {
 .container-fluid div {
   color: var(--grey);
 }
+
+.alert {
+  text-align: center;
+  margin-bottom: 0;
+}
