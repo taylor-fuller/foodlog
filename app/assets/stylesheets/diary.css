@@ -237,3 +237,7 @@ a.delete svg {
     display: inline-block;
     box-sizing: content-box;
 }
+
+strong.display-6 {
+    width: 100%;
+}

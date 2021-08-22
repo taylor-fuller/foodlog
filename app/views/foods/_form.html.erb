@@ -112,6 +112,8 @@
     <%= form.hidden_field :user_id, :value => current_user.id %>
 
     <div class="actions">
+      <%= hidden_field_tag(:date, @date) %>
+      <%= hidden_field_tag(:entry_id, @entry_id) %>
       <%= form.submit class:"btn btn-primary" %>
       <%= link_to 'Cancel', root_path, class:"btn btn-danger" %>
     </div> 

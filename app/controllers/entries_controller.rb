@@ -10,6 +10,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/1 or /entries/1.json
   def show
+    redirect_to root_path
   end
 
   # GET /entries/new
@@ -36,9 +37,9 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.save
         format.html { redirect_to diary_path(@diary, :date => @date.to_s), notice: "Entry was successfully created." }
-        format.json { render :show, status: :created, location: @entry }
+        format.json { render status: :created, location: @entry }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :action => "new", :date => @date.to_s }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
@@ -53,7 +54,7 @@ class EntriesController < ApplicationController
         format.html { redirect_to diary_path(@diary, :date => @date.to_s), notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: @entry }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :action => "new", :date => @date.to_s }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
