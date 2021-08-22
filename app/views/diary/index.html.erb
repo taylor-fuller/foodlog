@@ -3,12 +3,12 @@
   <div class="sub-header">
     <div class="nav-buttons">
       <%= link_to raw('<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="var(--grey)"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>'), diary_path(@diary, :date => @previous_date) %>
-      <h1 class="display-6"><%= 'Diary for ' + @nice_date %></h1>
+      <h1 class="display-6"><%= @nice_date %></h1>
       <%= link_to raw('<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 20 20" height="48px" viewBox="0 0 20 20" width="48px" fill="var(--grey)"><g><g><rect fill="none" height="20" width="20"/></g></g><g><polygon points="4.59,16.59 6,18 14,10 6,2 4.59,3.41 11.17,10"/></g></svg>'), diary_path(@diary, :date => @next_date) %>
     </div>
   </div>
   <div class="summary-container border">
-    <h2 class="display-6">Summary</h2>
+    <h2 class="display-6">Daily Summary</h2>
     <div class="summary">
       <div class="sub-summary">
         <h6 class="mb-3">MEALS</h6>
@@ -45,12 +45,33 @@
           <%= link_to raw('<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="var(--fontBlack)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/></svg>'), entry_path(entry, :date => @date.to_s), method: :delete, data: { confirm: 'Are you sure?' }, class:"delete" %>
         </div>
       </div>
+      <div class="meal-summary border-bottom">
+        <div class="meal-summary-header display-6">Meal Summary</div>
+        <div class="meal-summary-body">
+          <div class="meal-summary-section">
+            <div class="meal-summary-section-header">CALORIES</div>
+            <div class="display-6 meal-summary-section-body"><%= entry.foods.pluck(:calories).sum %> <span>kcal</span></div>
+          </div>
+          <div class="meal-summary-section">
+            <div class="meal-summary-section-header">PROTEINS</div>
+            <div class="display-6 meal-summary-section-body"><%= entry.foods.pluck(:proteins).sum %> <span>g</span></div>
+          </div>
+          <div class="meal-summary-section">
+            <div class="meal-summary-section-header">CARBOHYDRATES</div>
+            <div class="display-6 meal-summary-section-body"><%= entry.foods.pluck(:carbohydrates).sum %> <span>g</span></div>
+          </div>
+          <div class="meal-summary-section">
+            <div class="meal-summary-section-header">FATS</div>
+            <div class="display-6 meal-summary-section-body"><%= entry.foods.pluck(:fats).sum %> <span>g</span></div>
+          </div>
+        </div>
+      </div>
       <div class="food-container">
         <ul class="list-group list-group-flush">
           <% entry.foods.each do |food| %>
             <li class="list-item border-bottom py-3">
               <div class="food-header pb-1">
-                <div class="display-6"><%= food.title %></div>
+                <div class="food-header display-6"><%= food.title %></div>
                 <div class="food-links">
                   <%= link_to raw('<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="var(--fontBlack)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>'), edit_entry_food_path(:entry_id => entry.id, :id => food.id) %>
                   <%= link_to raw('<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="var(--fontBlack)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/></svg>'), entry_food_path(:entry_id => entry.id, :id => food.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"delete" %>
@@ -62,9 +83,9 @@
               <div class="text-muted py-1"><strong><%= food.fats %></strong> grams of fat</div>
             </li>
           <% end %>
-          <li class="list-item pt-3"><h5 class="p-3"><%= link_to "Add Food", new_entry_food_path(:entry_id => entry.id) %></h5></li>
+          <h5 class="p-3"><%= link_to "Add Food", new_entry_food_path(:entry_id => entry.id) %></h5>
         </ul>
-      </div> 
+      </div>
     </div>
     <% end %>
   </div>

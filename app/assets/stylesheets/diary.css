@@ -10,7 +10,7 @@
 
 .sub-header {
     width: 100%;
-    background-image: -webkit-linear-gradient(135deg,var(--base) 0,var(--baseDark) 100%);
+    background-image: -webkit-linear-gradient(left,var(--base),var(--baseDark), var(--base));
 }
 
 .summary {
@@ -18,8 +18,30 @@
     flex-flow: row wrap;
     width: 100%;
     justify-content: space-evenly;
-    max-width: 1600px;
+    max-width: 1400px;
     margin: auto;
+}
+
+.meal-summary {
+    display: flex;
+    flex-flow: column;
+    padding: 1rem;
+    text-align: center;
+}
+
+.meal-summary-body {
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.meal-summary-section {
+    padding: 1rem;
 }
 
 .meal-container {
@@ -32,9 +54,14 @@
     margin-bottom: 3rem;
 }
 
+span {
+    font-size: 1rem;
+}
+
 .food-container {
     background-color: white;
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     text-align: left;
 }
 
@@ -115,11 +142,13 @@ svg:hover {
 }
 
 .entries-container {
-    width: 80%;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-flow: column;
     justify-content: center;
+    padding: 1rem;
+    max-width: 1400px;
 }
 
 .cards-container {
@@ -199,12 +228,12 @@ a.delete svg {
     flex-basis: 33.3%;
 }
 
-.food-header div.display-6 {
+.food-header.display-6, .meal-summary-header.display-6 {
     font-size: 1.8rem;
 }
 
 .list-group strong {
-    margin-left: .5rem;
+    margin-left: 1rem;
     display: inline-block;
     box-sizing: content-box;
 }

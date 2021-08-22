@@ -1,19 +1,24 @@
 h1 {
     width: 100%;
     max-width: 800px;
-    color: var(--grey);
+    color: var(--fontBlack);
     margin: auto;
     text-align: center;
     font-size: 2.5rem;
     padding: 1rem;
 }
 
-.entries-form-container {
+.container {
     display: flex;
     flex-flow: column;
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-    margin: auto;
+    margin: 7.5vw auto;
     max-width: 800px;
-    border-radius: .2rem;
+    border-radius: .4rem;
     overflow: hidden;
+    background-color: var(--grey);
+}
+
+body {
+    background-color: var(--base);
 }
