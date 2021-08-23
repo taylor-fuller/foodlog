@@ -115,7 +115,7 @@
       <%= hidden_field_tag(:date, @date) %>
       <%= hidden_field_tag(:entry_id, @entry_id) %>
       <%= form.submit class:"btn btn-primary" %>
-      <%= link_to 'Cancel', root_path, class:"btn btn-danger" %>
+      <%= link_to 'Cancel', diary_path(@diary, :date => @date), class:"btn btn-danger" %>
     </div> 
   <% end %>
 </div>
