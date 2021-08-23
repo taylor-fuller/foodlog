@@ -22,7 +22,7 @@ class DiaryController < ApplicationController
         user_entries = Entry.where(user_id: current_user.id)
         @entries = user_entries.where(diary_date: date.in_time_zone('US/Pacific').midnight..date.in_time_zone('US/Pacific').end_of_day)
         @entries.each do |entry|
-            @count += entry.foods.count
+            @count += 1
             @calories += entry.foods.pluck(:calories).sum
             @proteins += entry.foods.pluck(:proteins).sum
             @carbohydrates += entry.foods.pluck(:carbohydrates).sum
