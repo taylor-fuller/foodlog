@@ -48,6 +48,8 @@ class FoodsController < ApplicationController
   # PATCH/PUT /foods/1 or /foods/1.json
   def update
     @entry_id = params[:entry_id]
+    @date = Date.parse(Time.parse(params[:date]).utc.to_s)
+
     respond_to do |format|
       if @food.update(food_params)
         format.html { redirect_to diary_path(@diary, :date => @date.to_s), notice: "Food was successfully updated." }

@@ -6,10 +6,10 @@ class DiaryController < ApplicationController
             date = DateTime.now
             @nice_date = DateTime.now.to_s(:nice_date)
         else
-            if params[:date].present?
+            if params[:date].present? && params[:date] != ""
                 date = Date.parse(Time.parse(params[:date]).utc.to_s)
                 @nice_date = date.strftime('%B %d, %Y')
-            elsif params[:search_date].present?
+            elsif params[:search_date].present? && params[:search_date] != ""
                 date = Date.parse(Time.parse(params[:search_date]).utc.to_s)
                 @nice_date = date.strftime('%B %d, %Y')
             end 

@@ -1,6 +1,6 @@
 class Entry < ApplicationRecord
     belongs_to :user
-    has_many :foods
+    has_many :foods, dependent: :destroy
 
     validates :meal_type, presence: { message: 'Please enter a valid meal name' }
 
