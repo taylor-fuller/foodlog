@@ -20,13 +20,15 @@
 
       <%= f.submit "Log in", class:"actions btn btn-primary"%>
     <% end %>
-    Or 
+    <div class="test-user">
+    <h6 class="mt-3">Or</h6>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= f.hidden_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"email", value:"test@example.com" %>
         <%= f.hidden_field :password, autocomplete: "current-password", class:"form-control", id:"password", value:"password" %>
 
-      <%= f.submit "Test User", class:"actions btn btn-primary"%>
+      <%= f.submit "Test User", class:"actions btn btn-secondary"%>
     <% end %>
+    </div>
   </div>
 
   <div class="bottom-container">
